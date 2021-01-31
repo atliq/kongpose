@@ -102,4 +102,14 @@ services:
 
 volumes:
   kong_data:
+    driver: local
+    driver_opts: 
+      type: none
+      device: $PWD/data/kong_data/
+      o: bind
   konga_data:
+    driver: local
+    driver_opts: 
+      type: none
+      device: $PWD/data/konga_data/
+      o: bind
