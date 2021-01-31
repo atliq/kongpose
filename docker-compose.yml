@@ -1,4 +1,4 @@
-version: '2.1'
+version: "3"
 
 services:
   kong-database:
@@ -24,6 +24,7 @@ services:
     environment:
       KONG_DATABASE: postgres
       KONG_PG_HOST: kong-database
+    user: root
     command: sh -c "(kong migrations up || kong migrations bootstrap) && touch migrations_run && sleep 30"
     healthcheck:
       test: "if [[ -f migrations_run ]] ; then exit 0; else exit 1; fi"
